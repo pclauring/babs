@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String?
+  monsters Monster[]
+}
+
+model Monster {
+  id      Int     @id @default(autoincrement())
+  name    String
+  sprite  String?
+  owner   User?   @relation(fields: [ownerId], references: [id])
+  ownerId Int?
+  Event   Event[]
+}
+
+model Event {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  type      String
+  monster   Monster? @relation(fields: [monsterId], references: [id])
+  monsterId Int?
+}
