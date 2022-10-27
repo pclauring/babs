@@ -1,11 +1,18 @@
-import express, { Request, Response } from "express";
+import express from "express";
 
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-
-import { postMonster, getAllMonsters } from "../controllers/monster.controller";
+import {
+  postMonster,
+  getAllMonsters,
+  putMonster,
+  getMonsterById,
+  deleteMonsterById,
+  getMonsterByQueryParams,
+} from "../controllers/monster.controller";
 export const monsterRouter = express.Router();
 
 monsterRouter.post("/", postMonster);
-
 monsterRouter.get("/all", getAllMonsters);
+monsterRouter.put("/:id", putMonster);
+monsterRouter.get("/:id", getMonsterById);
+monsterRouter.get("/", getMonsterByQueryParams);
+monsterRouter.delete("/:id", deleteMonsterById);
