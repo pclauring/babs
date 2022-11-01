@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import { testRouter } from "./routes/test.router";
-import { monsterRouter } from "./routes/monster.router";
+import { testRouter } from "./routes/TestRouter";
+import { monsterRouter } from "./routes/MonsterRouter";
 
 const port = process.env.PORT;
 const app = express();
