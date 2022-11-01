@@ -1,16 +1,11 @@
 import { Request, Response } from "express";
-import {
-  createMonster,
-  getMonsters,
-  deleteMonster,
-  updateMonster,
-  findMonsterById,
-  findMonsterByQuery,
-} from "../repositories/MonsterRepository";
+import { MonsterRepository as MonsterRepository } from "../repositories/MonsterRepository";
+
+const repository = new MonsterRepository();
 
 export const getAllMonsters = async (req: Request, res: Response) => {
   try {
-    const monsters = await getMonsters();
+    const monsters = await repository.getMonsters();
     res.status(200).send({
       data: monsters,
     });
@@ -22,7 +17,7 @@ export const getAllMonsters = async (req: Request, res: Response) => {
 export const postMonster = async (req: Request, res: Response) => {
   try {
     const { name } = req.body;
-    const monster = await createMonster(name);
+    const monster = await repository.createMonster(name);
 
     monster
       ? res.status(201).send(monster)
@@ -37,7 +32,7 @@ export const getMonsterById = async (req: Request, res: Response) => {
   const id = req?.params?.id;
 
   try {
-    const monster = await findMonsterById(parseInt(id));
+    const monster = await repository.findMonsterById(parseInt(id));
 
     if (monster) {
       res.status(200).send(monster);
@@ -51,7 +46,7 @@ export const getMonsterById = async (req: Request, res: Response) => {
 
 export const getMonsterByQueryParams = async (req: Request, res: Response) => {
   try {
-    const monsters = await findMonsterByQuery(req.query);
+    const monsters = await repository.findMonsterByQuery(req.query);
 
     if (monsters) {
       res.status(200).send(monsters);
@@ -67,7 +62,7 @@ export const putMonster = async (req: Request, res: Response) => {
   const id = req?.params?.id;
   let monster = { ...req.body, id: parseInt(id) };
   try {
-    monster = await updateMonster(monster);
+    monster = await repository.updateMonster(monster);
     monster
       ? res.status(200).send(monster)
       : res.status(304).send(`Monster with id: ${id} not updated`);
@@ -80,7 +75,7 @@ export const deleteMonsterById = async (req: Request, res: Response) => {
   const id = req?.params?.id;
 
   try {
-    const monster = await deleteMonster(parseInt(id));
+    const monster = await repository.deleteMonster(parseInt(id));
     monster
       ? res.status(202).send(monster)
       : res.status(400).send(`Monster with id ${id} does not exist`);
