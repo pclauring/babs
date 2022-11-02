@@ -28,11 +28,11 @@ export class UserRepository implements IUserRepository {
       },
     });
   }
-  public createUser(name: string, email: string): Promise<User> {
+  public createUser(user: IUserPayload): Promise<User> {
     return this._prismaClient.user.create({
       data: {
-        name: name,
-        email: email,
+        name: user.name,
+        email: user.email,
       },
     });
   }
