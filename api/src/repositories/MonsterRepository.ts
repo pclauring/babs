@@ -28,10 +28,10 @@ export class MonsterRepository implements IMonsterRepository {
       },
     });
   }
-  public createMonster(name: string): Promise<Monster> {
+  public createMonster(monster: IMonsterPayload): Promise<Monster> {
     return this._prismaClient.monster.create({
       data: {
-        name: name,
+        ...monster,
       },
     });
   }

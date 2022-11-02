@@ -31,8 +31,7 @@ export class UserRepository implements IUserRepository {
   public createUser(user: IUserPayload): Promise<User> {
     return this._prismaClient.user.create({
       data: {
-        name: user.name,
-        email: user.email,
+        ...user,
       },
     });
   }

@@ -16,15 +16,14 @@ export const getAllMonsters = async (req: Request, res: Response) => {
 
 export const postMonster = async (req: Request, res: Response) => {
   try {
-    const { name } = req.body;
-    const monster = await repository.createMonster(name);
+    const monster = await repository.createMonster(req.body);
 
     monster
       ? res.status(201).send(monster)
       : res.status(500).send("Failed to create a new monster.");
   } catch (error) {
     console.error(error);
-    res.status(400).send({ message: error });
+    res.status(400).send({ message: (error as Error).message });
   }
 };
 
@@ -67,7 +66,7 @@ export const putMonster = async (req: Request, res: Response) => {
       ? res.status(200).send(monster)
       : res.status(304).send(`Monster with id: ${id} not updated`);
   } catch (error) {
-    res.status(400).send({ message: error });
+    res.status(400).send({ message: (error as Error).message });
   }
 };
 
@@ -80,6 +79,6 @@ export const deleteMonsterById = async (req: Request, res: Response) => {
       ? res.status(202).send(monster)
       : res.status(400).send(`Monster with id ${id} does not exist`);
   } catch (error) {
-    res.status(400).send({ message: error });
+    res.status(400).send({ message: (error as Error).message });
   }
 };
