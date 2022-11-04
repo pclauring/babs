@@ -10,13 +10,20 @@ export class UserRepository implements IUserRepository {
   }
 
   public getUsers(): Promise<User[]> {
-    return this._prismaClient.user.findMany();
+    return this._prismaClient.user.findMany({
+      include: {
+        monsters: true,
+      },
+    });
   }
 
   public findUserById(id: number): Promise<User | null> {
     return this._prismaClient.user.findUnique({
       where: {
         id: id,
+      },
+      include: {
+        monsters: true,
       },
     });
   }
@@ -25,6 +32,9 @@ export class UserRepository implements IUserRepository {
     return this._prismaClient.user.findMany({
       where: {
         ...query,
+      },
+      include: {
+        monsters: true,
       },
     });
   }

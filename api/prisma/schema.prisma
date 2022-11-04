@@ -20,7 +20,7 @@ model Monster {
   sprite  String?
   owner   User?   @relation(fields: [ownerId], references: [id])
   ownerId Int?
-  Event   Event[]
+  events  Event[]
 }
 
 model Event {

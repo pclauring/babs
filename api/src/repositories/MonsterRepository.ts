@@ -10,13 +10,20 @@ export class MonsterRepository implements IMonsterRepository {
   }
 
   public getMonsters(): Promise<Monster[]> {
-    return this._prismaClient.monster.findMany();
+    return this._prismaClient.monster.findMany({
+      include: {
+        events: true,
+      },
+    });
   }
 
   public findMonsterById(id: number): Promise<Monster | null> {
     return this._prismaClient.monster.findUnique({
       where: {
         id: id,
+      },
+      include: {
+        events: true,
       },
     });
   }
@@ -25,6 +32,9 @@ export class MonsterRepository implements IMonsterRepository {
     return this._prismaClient.monster.findMany({
       where: {
         ...query,
+      },
+      include: {
+        events: true,
       },
     });
   }
@@ -42,9 +52,7 @@ export class MonsterRepository implements IMonsterRepository {
         id: monster.id,
       },
       data: {
-        name: monster.name,
-        sprite: monster.sprite,
-        ownerId: monster.ownerId,
+        ...monster,
       },
     });
   }
