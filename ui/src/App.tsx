@@ -1,10 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./features/layout/Layout";
-import Monster from "./features/monster/Monster";
-import Profile from "./features/profile/Profile";
-import Welcome from "./features/welcome/Welcome";
-import NoMatch from "./features/nomatch/NoMatch";
+import Layout from "./features/layout";
+import Monster from "./features/monster";
+import Profile from "./features/profile";
+import Welcome from "./features/welcome";
+import NoMatch from "./features/nomatch";
 
 function App() {
   return (
