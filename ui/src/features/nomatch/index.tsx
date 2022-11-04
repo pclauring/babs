@@ -1,3 +1,3 @@
-import Monster from "./Monster";
+import NoMatch from "./NoMatch";
 
-export default Monster;
+export default NoMatch;
