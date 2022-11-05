@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { Monster } from "../../../types/Monster";
+import { MonsterModel } from "../../../types/MonsterModel";
 
 const useGetAllMonsters = () => {
-  const [monsters, setMonsters] = useState<Monster[]>();
+  const [monsters, setMonsters] = useState<MonsterModel[]>();
 
   useEffect(() => {
     fetch(process.env.REACT_APP_API_HOST + "/monsters/all")
       .then((response) => response.json())
-      .then((response) => setMonsters(response))
+      .then((response) => setMonsters(response.data))
       .catch((error) => setMonsters([]));
   }, []);
 
