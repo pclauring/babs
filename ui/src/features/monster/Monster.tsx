@@ -1,14 +1,14 @@
 import useGetAllMonsters from "./hooks/fetchMonster";
 
 const Monster: React.FC<{}> = () => {
-  const service = useGetAllMonsters();
-  console.log(service);
+  const monsters = useGetAllMonsters();
+  console.log(monsters);
   return (
     <div>
       <h2>Monster Page</h2>
       <div>
-        {service &&
-          service?.map((monster) => {
+        {monsters &&
+          monsters?.map((monster) => {
             return <div key={monster.id}>{monster.name}</div>;
           })}
       </div>
