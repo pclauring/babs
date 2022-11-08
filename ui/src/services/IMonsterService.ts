@@ -3,8 +3,13 @@ import { MonsterModel } from "../types/MonsterModel";
 import { ServiceResponse } from "../types/ServiceResponse";
 export interface IMonsterService {
   getAllMonsters(): Promise<AxiosResponse<ServiceResponse<MonsterModel[]>>>;
-  //   getMonstersForUser(userId: string): Promise<AxiosResponse<IMonster[]>>;
-  //   createMonster(monster: IMonster): Promise<AxiosResponse<IMonster>>;
-  //   deleteMonster(_id: string): Promise<AxiosResponse<IMonster>>;
-  //   addTraining(monster: IMonster): Promise<AxiosResponse<IMonster>>;
+  getMonstersForUser(
+    userId: number,
+  ): Promise<AxiosResponse<ServiceResponse<MonsterModel[]>>>;
+  createMonster(
+    monster: MonsterModel,
+  ): Promise<AxiosResponse<ServiceResponse<MonsterModel>>>;
+  deleteMonster(
+    _id: number,
+  ): Promise<AxiosResponse<ServiceResponse<MonsterModel>>>;
 }
