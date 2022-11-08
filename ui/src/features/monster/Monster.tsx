@@ -1,14 +1,19 @@
+import { useEffect, useState } from "react";
 import { MonsterService } from "../../services/MonsterService";
 import { MonsterModel } from "../../types/MonsterModel";
 import CreateMonster from "./CreateMonster";
-import useGetAllMonsters from "./hooks/fetchMonster";
 
 const Monster: React.FC<{}> = () => {
   const monsterService = new MonsterService(
     process.env.REACT_APP_API_HOST,
     undefined,
   );
-  const monsters = useGetAllMonsters();
+  const [monsters, setMonsters] = useState<MonsterModel[]>();
+  useEffect(() => {
+    monsterService.getAllMonsters().then(({ data }) => {
+      setMonsters(data.data);
+    });
+  });
 
   const handleCreateMonster = (
     e: React.FormEvent,
