@@ -30,7 +30,7 @@ export default function Layout() {
           {layoutItems &&
             layoutItems?.map((item) => {
               return (
-                <li className={styles.li}>
+                <li className={styles.li} key={item.label}>
                   <Link
                     onClick={handleLinkClick}
                     className={
