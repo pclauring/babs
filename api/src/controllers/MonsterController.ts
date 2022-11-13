@@ -51,9 +51,15 @@ export const getMonsterByQueryParams = async (req: Request, res: Response) => {
       res.status(200).send(monsters);
     }
   } catch (error) {
+    let query: string = "";
+    for (var propName in req.query) {
+      if (req.query.hasOwnProperty(propName)) {
+        query += propName + " = " + req.query[propName];
+      }
+    }
     res
       .status(404)
-      .send(`Unable to find matching document with id: ${req.params.id}`);
+      .send(`Unable to find matching record with properties: ${query}`);
   }
 };
 
