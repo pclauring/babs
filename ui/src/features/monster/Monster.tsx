@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MonsterService } from "../../services/MonsterService";
 import { MonsterModel } from "../../types/MonsterModel";
 import CreateMonster from "./CreateMonster";
+import MonsterStats from "./MonsterStats";
 
 const Monster: React.FC<{}> = () => {
   const monsterService = new MonsterService(
@@ -28,6 +29,7 @@ const Monster: React.FC<{}> = () => {
   return (
     <div>
       <h2>Monster Page</h2>
+      <MonsterStats />
       <CreateMonster saveMonster={handleCreateMonster}></CreateMonster>
       <div>
         {monsters &&

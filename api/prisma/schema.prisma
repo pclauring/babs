@@ -15,12 +15,21 @@ model User {
 }
 
 model Monster {
-  id      Int     @id @default(autoincrement())
-  name    String
-  sprite  String?
-  owner   User?   @relation(fields: [ownerId], references: [id])
-  ownerId Int?
-  events  Event[]
+  id        Int     @id @default(autoincrement())
+  name      String
+  sprite    String?
+  owner     User?   @relation(fields: [ownerId], references: [id])
+  ownerId   Int?
+  level     Int?
+  health    Int?
+  maxHealth Int?
+  energy    Int?
+  maxEnergy Int?
+  offense   Int?
+  defense   Int?
+  mood      String?
+  type      String?
+  events    Event[]
 }
 
 model Event {
