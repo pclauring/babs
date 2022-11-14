@@ -29,7 +29,7 @@ const Monster: React.FC<{}> = () => {
   return (
     <div>
       <h2>Monster Page</h2>
-      <MonsterStats />
+      {monsters && <MonsterStats monster={monsters[0]} />}
       <CreateMonster saveMonster={handleCreateMonster}></CreateMonster>
       <div>
         {monsters &&

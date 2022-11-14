@@ -1,0 +1,14 @@
+{
+  "name": "Snake",
+  "sprite": "test.png",
+  "ownerId": 4,
+  "level": 1,
+  "maxHealth": 10,
+  "health": 9,
+  "energy": 3,
+  "maxEnergy": 4,
+  "offense": 3,
+  "defense": 2,
+  "mood": "Tired",
+  "type": "Reptile"
+}
