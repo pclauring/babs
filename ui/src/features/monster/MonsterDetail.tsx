@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MonsterService } from "../../services/MonsterService";
 import { MonsterModel } from "../../types/MonsterModel";
+import styles from "./MonsterDetail.module.css";
 import MonsterStats from "./MonsterStats";
 
 const MonsterDetail: React.FC<{}> = () => {
@@ -19,8 +20,8 @@ const MonsterDetail: React.FC<{}> = () => {
   });
 
   return (
-    <div>
-      {monster && <h1>NAME: {monster.name}</h1>}
+    <div className={styles.main}>
+      {monster && <div className={styles.name}>NAME: {monster.name}</div>}
       {monster && <MonsterStats monster={monster} />}
     </div>
   );

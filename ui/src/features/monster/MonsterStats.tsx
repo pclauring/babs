@@ -8,7 +8,7 @@ export default function MonsterStats(props: MonsterProps) {
   const { monster } = props;
   return (
     <div className={styles.monsterInfoPanel}>
-      <h2>Monster stats</h2>
+      <div>Monster stats</div>
       <div>
         HP: {monster.health} / {monster.maxHealth}
       </div>
