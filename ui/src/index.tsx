@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import "./fonts/DotGothic16/DotGothic16-Regular.ttf";
+import Auth0ProviderWithHistory from "./features/auth0/Auth0ProviderWithHistory";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Auth0ProviderWithHistory>
+        <App />
+      </Auth0ProviderWithHistory>
     </BrowserRouter>
   </React.StrictMode>,
 );

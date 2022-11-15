@@ -39,6 +39,8 @@ services:
       - NODE_ENV=$UI_NODE_ENV
       - PORT=$UI_PORT
       - REACT_APP_API_HOST
+      - REACT_APP_AUTH0_DOMAIN
+      - REACT_APP_AUTH0_CLIENT_ID
       - CHOKIDAR_USEPOLLING=true
     ports:
       - $UI_PORT:$UI_PORT

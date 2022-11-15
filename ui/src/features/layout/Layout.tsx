@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import AuthenticationButton from "../auth0/AuthenticationButton";
 import styles from "./Layout.module.css";
 
 interface LinkItem {
@@ -12,7 +13,7 @@ export default function Layout() {
   const [layoutItems, setLayoutItems] = useState<LinkItem[]>([
     { active: true, label: "Home", to: "/" },
     { active: false, label: "Monster", to: "/monster" },
-    { active: false, label: "Profile", to: "/" },
+    { active: false, label: "Profile", to: "/profile" },
   ]);
 
   function handleLinkClick(e: React.MouseEvent<HTMLElement>) {
@@ -43,6 +44,7 @@ export default function Layout() {
                 </li>
               );
             })}
+          <AuthenticationButton />
           {/* <li className={styles.li}>
             <Link onClick={handleLinkClick} className={styles.link} to="/">
               Home
