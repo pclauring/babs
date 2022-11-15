@@ -44,7 +44,9 @@ export default function Layout() {
                 </li>
               );
             })}
-          <AuthenticationButton />
+          <li className={styles.li}>
+            <AuthenticationButton />
+          </li>
           {/* <li className={styles.li}>
             <Link onClick={handleLinkClick} className={styles.link} to="/">
               Home
