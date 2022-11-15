@@ -25,6 +25,10 @@ export class MonsterService implements IMonsterService {
     );
   }
 
+  getMonsterById(id: number): Promise<AxiosResponse<MonsterModel>> {
+    return this._axiosClient.get<MonsterModel>(`/${id}`);
+  }
+
   public createMonster(
     monster: MonsterModel,
   ): Promise<AxiosResponse<ServiceResponse<MonsterModel>>> {

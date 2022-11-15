@@ -5,6 +5,7 @@ import Monster from "./features/monster";
 import Profile from "./features/profile";
 import Welcome from "./features/welcome";
 import NoMatch from "./features/nomatch";
+import MonsterDetail from "./features/monster/MonsterDetail";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Welcome />} />
+          <Route path="monster/:id" element={<MonsterDetail />} />
           <Route path="monster" element={<Monster />} />
           <Route path="profile" element={<Profile />} />
           {/* Using path="*"" means "match anything", so this route

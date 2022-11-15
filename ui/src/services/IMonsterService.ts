@@ -9,6 +9,7 @@ export interface IMonsterService {
   createMonster(
     monster: MonsterModel,
   ): Promise<AxiosResponse<ServiceResponse<MonsterModel>>>;
+  getMonsterById(id: number): Promise<AxiosResponse<MonsterModel>>;
   deleteMonster(
     _id: number,
   ): Promise<AxiosResponse<ServiceResponse<MonsterModel>>>;
