@@ -22,6 +22,7 @@ const MonsterDetail: React.FC<{}> = () => {
   return (
     <div className={styles.main}>
       {monster && <div className={styles.name}>NAME: {monster.name}</div>}
+      <div className={styles.box}></div>
       {monster && <MonsterStats monster={monster} />}
     </div>
   );
