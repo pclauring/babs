@@ -1,0 +1,22 @@
+.main {
+  aspect-ratio: 0.5;
+  width: 400px;
+  /* height: 50vh;
+    width: 50%; */
+  text-align: center;
+  background-color: #adb993;
+  margin: auto;
+  border: #949d6a;
+  border-width: 5px;
+  border-style: solid;
+}
+
+.box {
+  background-color: #d0d38f;
+  width: 100%;
+  height: 50%;
+}
+.name {
+  font-size: 2em;
+  background-color: #adb993;
+}

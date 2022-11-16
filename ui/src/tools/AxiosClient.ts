@@ -11,7 +11,9 @@ interface BaseRequestInit {
   headers?: AxiosRequestHeaders;
 }
 
-interface GetRequestInit extends BaseRequestInit {}
+interface GetRequestInit extends BaseRequestInit {
+  params?: any;
+}
 
 interface DeleteRequestInit extends BaseRequestInit {}
 
