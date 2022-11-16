@@ -15,6 +15,7 @@ const Monster: React.FC<{}> = () => {
       console.log(data);
       setMonsters(data.data);
     });
+    // eslint-disable-next-line
   }, []);
 
   const handleCreateMonster = (

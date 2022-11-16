@@ -1,0 +1,33 @@
+.emulator {
+  display: grid;
+  grid-template-rows: 1fr 4fr 4fr;
+  height: 100%;
+}
+
+.header {
+  justify-self: center;
+  align-self: center;
+  background-color: #adb993;
+}
+
+.screen {
+  background-color: #d0d38f;
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  border: #949d6a;
+  border-width: 2.5px;
+  border-style: solid;
+  border-radius: 2px;
+  box-shadow: inset 0px 0px 5px #949d6a;
+}
+
+.footer {
+  justify-self: center;
+  align-self: center;
+  background-color: #adb993;
+}
+
+.name {
+  font-size: 2em;
+}

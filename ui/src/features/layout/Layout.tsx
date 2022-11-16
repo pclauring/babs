@@ -10,14 +10,20 @@ export default function Layout() {
     <div>
       {/* A "layout route" is a good place to put markup you want to
             share across all the pages on your site, like navigation. */}
-      <nav>
-        {user && <div>{user.email}</div>}
-        <AuthenticationButton />
-      </nav>
-      {/* An <Outlet> renders whatever child route is currently active,
+      <div className={styles.main}>
+        <div className={styles.nav}>
+          <div className={styles.profile}>
+            {user && <div>{user.email}</div>}
+          </div>
+          <div className={styles.auth}>
+            <AuthenticationButton />
+          </div>
+        </div>
+        {/* An <Outlet> renders whatever child route is currently active,
             so you can think about this <Outlet> as a placeholder for
             the child routes we defined above. */}
-      <Outlet />
+        <Outlet />
+      </div>
     </div>
   );
 }
