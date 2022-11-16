@@ -12,9 +12,10 @@ const Monster: React.FC<{}> = () => {
   const [monsters, setMonsters] = useState<MonsterModel[]>();
   useEffect(() => {
     monsterService.getAllMonsters().then(({ data }) => {
+      console.log(data);
       setMonsters(data.data);
     });
-  });
+  }, []);
 
   const handleCreateMonster = (
     e: React.FormEvent,
