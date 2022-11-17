@@ -5,17 +5,18 @@ import Monster from "./features/monster";
 import Profile from "./features/profile";
 import NoMatch from "./features/nomatch";
 import ProtectedRoute from "./features/auth0/ProtectedRoute";
-import Emulator from "./features/emulator";
+import MonsterList from "./features/monsterList";
+import MonsterDetail from "./features/monsterDetail";
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Emulator />} />
+          <Route index element={<MonsterList />} />
           <Route
             path="monster/:id"
-            element={<ProtectedRoute component={Emulator} />}
+            element={<ProtectedRoute component={MonsterDetail} />}
           />
           <Route
             path="monster"

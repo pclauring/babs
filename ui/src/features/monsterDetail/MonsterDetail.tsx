@@ -1,40 +1,34 @@
 import { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-// import { useNavigate } from "react-router-dom";
-import { UserService } from "../../services/UserService";
-import { UserModel } from "../../types/UserModel";
 import Emulator from "../emulator";
-// import styles from "./MonsterList.module.css";
-import { Link } from "react-router-dom";
+import styles from "./MonsterDetail.module.css";
+import { Link, useParams } from "react-router-dom";
 import { MonsterModel } from "../../types/MonsterModel";
+import { MonsterService } from "../../services/MonsterService";
+import MonsterStats from "../monster/MonsterStats";
 
 const MonsterList: React.FC<{}> = () => {
-  const { user } = useAuth0();
-  // const navigate = useNavigate();
-  const [userModel, setUserModel] = useState<UserModel>();
+  const { id } = useParams();
+  const [monster, setMonster] = useState<MonsterModel>();
+
   useEffect(() => {
-    const userService = new UserService(
+    const monsterService = new MonsterService(
       process.env.REACT_APP_API_HOST,
       undefined,
     );
-    if (user?.email !== undefined) {
-      userService.getUsersByEmail(user.email).then(({ data }) => {
-        // if (data[0].monsters.length === 1) {
-        //   navigate(`/monster/${data[0].monsters[0].id}`);
-        // }
+    if (id !== undefined)
+      monsterService.getMonsterById(parseInt(id)).then(({ data }) => {
         console.log(data);
-        setUserModel(data[0]);
+        setMonster(data);
       });
-    }
-  }, [user?.email]);
+  }, [id]);
 
   return (
     <div>
-      {userModel && (
+      {monster && (
         <Emulator
-          headerComponent={Header(userModel.name)}
-          screenComponent={List(userModel.monsters)}
-          footerComponent={Options()}
+          headerComponent={Header(monster.name)}
+          screenComponent={<div></div>}
+          footerComponent={<MonsterStats monster={monster} />}
         />
       )}
     </div>

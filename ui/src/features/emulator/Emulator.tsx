@@ -1,34 +1,20 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { MonsterService } from "../../services/MonsterService";
-import { MonsterModel } from "../../types/MonsterModel";
 import styles from "./Emulator.module.css";
-import MonsterStats from "../monster/MonsterStats";
+interface EmulatorProps {
+  headerComponent: React.ReactNode;
+  screenComponent: React.ReactNode;
+  footerComponent: React.ReactNode;
+}
 
-const Emulator: React.FC<{}> = () => {
-  const { id } = useParams();
-  const [monster, setMonster] = useState<MonsterModel>();
-  useEffect(() => {
-    const monsterService = new MonsterService(
-      process.env.REACT_APP_API_HOST,
-      undefined,
-    );
-    if (id !== undefined)
-      monsterService.getMonsterById(parseInt(id)).then(({ data }) => {
-        console.log(data);
-        setMonster(data);
-      });
-  }, [id]);
-
+const Emulator: React.FC<EmulatorProps> = ({
+  headerComponent,
+  screenComponent,
+  footerComponent,
+}) => {
   return (
     <div className={styles.emulator}>
-      <div className={styles.header}>
-        {monster && <div className={styles.name}>NAME: {monster.name}</div>}
-      </div>
-      <div className={styles.screen}></div>
-      <div className={styles.footer}>
-        {monster && <MonsterStats monster={monster} />}
-      </div>
+      <div className={styles.header}>{headerComponent}</div>
+      <div className={styles.screen}>{screenComponent}</div>
+      <div className={styles.footer}>{footerComponent}</div>
     </div>
   );
 };
