@@ -47,7 +47,7 @@ function List(monsters: MonsterModel[]) {
       <ul>
         {monsters.map((monster) => {
           return (
-            <li>
+            <li key={monster.id}>
               <Link to={`/monster/${monster.id}`} key={monster.id}>
                 {monster.name}
               </Link>

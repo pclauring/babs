@@ -12,7 +12,7 @@ export interface MonsterModel {
   maxEnergy: number | null;
   offense: number | null;
   defense: number | null;
-  mood: String | null;
-  type: String | null;
+  mood: string | null;
+  type: string | null;
   events: EventModel[];
 }
