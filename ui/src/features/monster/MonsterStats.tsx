@@ -1,6 +1,6 @@
 import styles from "./MonsterStats.module.css";
 import { MonsterModel } from "../../types/MonsterModel";
-import { ReactComponent as SwordIcon } from "../../assets/sword.svg";
+import { ReactComponent as SwordIcon } from "../../assets/regular-sword.svg";
 
 type MonsterProps = {
   monster: MonsterModel;
@@ -20,7 +20,7 @@ export default function MonsterStats(props: MonsterProps) {
       </div>
       <div className={styles.attributes}>
         <div>
-          <SwordIcon style={{ height: "32px" }} />
+          <SwordIcon style={{ height: "1em" }} />
           OFFENSE: {monster.offense}
         </div>
         <div>DEFENSE: {monster.defense}</div>
