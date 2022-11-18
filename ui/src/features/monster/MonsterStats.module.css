@@ -2,5 +2,37 @@
   display: grid;
   background-color: #adb993;
   /* https://coolors.co/9cafb7-adb993-d0d38f-f6ca83-949d6a */
-  font-size: 1.5em;
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.vitals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1fr 1fr;
+  grid-template-areas:
+    "header header"
+    "health energy";
+  font-size: 2em;
+}
+
+.vitalHeader {
+  grid-area: header;
+}
+
+.health {
+  grid-area: health;
+}
+
+.energy {
+  grid-area: energy;
+}
+
+.attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 2em;
 }

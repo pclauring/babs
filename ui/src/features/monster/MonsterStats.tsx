@@ -7,13 +7,21 @@ type MonsterProps = {
 export default function MonsterStats(props: MonsterProps) {
   const { monster } = props;
   return (
-    <div className={styles.monsterInfoPanel}>
-      <div>CURRENT VITALS</div>
-      <div>
-        HP: {monster.health} / {monster.maxHealth}
+    <div>
+      <div className={styles.vitals}>
+        <div className={styles.vitalHeader}>CURRENT VITALS</div>
+        <div className={styles.health}>
+          HP: {monster.health} / {monster.maxHealth}
+        </div>
+        <div className={styles.energy}>
+          PP: {monster.energy} / {monster.maxEnergy}
+        </div>
       </div>
-      <div>
-        PP: {monster.energy} / {monster.maxEnergy}
+      <div className={styles.attributes}>
+        <div>OFFENSE: {monster.offense}</div>
+        <div>DEFENSE: {monster.defense}</div>
+        <div>TYPE: {monster.type}</div>
+        <div>MOOD: {monster.mood}</div>
       </div>
     </div>
   );
