@@ -1,6 +1,6 @@
 import styles from "./MonsterStats.module.css";
 import { MonsterModel } from "../../types/MonsterModel";
-import { ReactComponent as SwordIcon } from "../../assets/regular-sword.svg";
+import { ReactComponent as SwordIcon } from "../../assets/sword-color.svg";
 
 type MonsterProps = {
   monster: MonsterModel;
