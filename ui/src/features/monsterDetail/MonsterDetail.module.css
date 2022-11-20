@@ -1,0 +1,16 @@
+.cssButton {
+  background-color: transparent;
+  background-image: url("../../assets/pixel-button-border.svg");
+  background-origin: border-box;
+  background-position: center;
+  background-size: 150%;
+  height: 80px;
+  width: 80px;
+  border: 0;
+  color: white;
+  font-family: inherit;
+}
+
+.cssButton:active {
+  transform: translateY(2px);
+}

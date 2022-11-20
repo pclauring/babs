@@ -12,8 +12,8 @@
 
 .screen {
   background-color: #d0d38f;
-  aspect-ratio: 1 / 1;
-  height: 100%;
+  height: 90%;
+  width: 90%;
   margin: auto;
   border: #949d6a;
   border-width: 2.5px;

@@ -27,7 +27,7 @@ const MonsterList: React.FC<{}> = () => {
       {monster && (
         <Emulator
           headerComponent={Header(monster.name)}
-          screenComponent={<div></div>}
+          screenComponent={<Buttons />}
           footerComponent={<MonsterStats monster={monster} />}
         />
       )}
@@ -64,6 +64,18 @@ function Options() {
       <li>Option 2</li>
       <li>Option 3</li>
     </ul>
+  );
+}
+
+function CSSButton() {
+  return <button className={styles.cssButton}>BUTTON</button>;
+}
+
+function Buttons() {
+  return (
+    <div>
+      <CSSButton />
+    </div>
   );
 }
 export default MonsterList;
