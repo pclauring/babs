@@ -3,8 +3,8 @@ import { MonsterModel } from "../../types/MonsterModel";
 import { ReactComponent as SwordIcon } from "../../assets/sword.svg";
 import { ReactComponent as TypeIcon } from "../../assets/type.svg";
 import { ReactComponent as HealthIcon } from "../../assets/heart-anitomical.svg";
-import { ReactComponent as ShieldIcon } from "../../assets/shield-brown.svg";
-import { ReactComponent as MoodIcon } from "../../assets/health.svg";
+import { ReactComponent as ShieldIcon } from "../../assets/shield-round.svg";
+import { ReactComponent as MoodIcon } from "../../assets/brain.svg";
 import { ReactComponent as EnergyIcon } from "../../assets/energy.svg";
 
 type MonsterProps = {
