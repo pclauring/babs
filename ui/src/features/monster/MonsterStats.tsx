@@ -1,8 +1,10 @@
 import styles from "./MonsterStats.module.css";
 import { MonsterModel } from "../../types/MonsterModel";
-import { ReactComponent as SwordIcon } from "../../assets/sword-color.svg";
+import { ReactComponent as SwordIcon } from "../../assets/sword.svg";
+import { ReactComponent as TypeIcon } from "../../assets/type.svg";
+import { ReactComponent as HealthIcon } from "../../assets/heart-anitomical.svg";
 import { ReactComponent as ShieldIcon } from "../../assets/shield-brown.svg";
-import { ReactComponent as HealthIcon } from "../../assets/health.svg";
+import { ReactComponent as MoodIcon } from "../../assets/health.svg";
 import { ReactComponent as EnergyIcon } from "../../assets/energy.svg";
 
 type MonsterProps = {
@@ -32,8 +34,15 @@ export default function MonsterStats(props: MonsterProps) {
           <ShieldIcon style={{ height: "1em" }} />
           DEFENSE: {monster.defense}
         </div>
-        <div>TYPE: {monster.type}</div>
-        <div>MOOD: {monster.mood}</div>
+        <div>
+          {" "}
+          <TypeIcon style={{ height: "1em" }} />
+          TYPE:{monster.type}
+        </div>
+        <div>
+          <MoodIcon style={{ height: "1em" }} />
+          MOOD:{monster.mood}
+        </div>
       </div>
     </div>
   );
