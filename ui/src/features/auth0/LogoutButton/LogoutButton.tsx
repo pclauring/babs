@@ -6,11 +6,9 @@ const LogoutButton = () => {
 
   return (
     <button
-      className={styles.cancel}
+      className={styles.signout}
       onClick={() => logout({ returnTo: window.location.origin })}
-    >
-      LOGOUT
-    </button>
+    ></button>
   );
 };
 

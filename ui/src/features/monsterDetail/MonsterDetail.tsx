@@ -35,46 +35,15 @@ const MonsterList: React.FC<{}> = () => {
   );
 };
 
-function List(monsters: MonsterModel[]) {
-  return (
-    <div>
-      <ul>
-        {monsters.map((monster) => {
-          return (
-            <li>
-              <Link to={`/monster/${monster.id}`} key={monster.id}>
-                {monster.name}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
-
 function Header(name: string) {
   return <h1>{name}</h1>;
-}
-
-function Options() {
-  return (
-    <ul>
-      <li>Option 1</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
-    </ul>
-  );
-}
-
-function CSSButton() {
-  return <button className={styles.cssButton}>BUTTON</button>;
 }
 
 function Buttons() {
   return (
     <div>
-      <CSSButton />
+      <button className={styles.primary} />
+      <button className={styles.destructive} />
     </div>
   );
 }

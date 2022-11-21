@@ -5,9 +5,10 @@ const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <button className={styles.submit} onClick={() => loginWithRedirect()}>
-      LOGIN
-    </button>
+    <button
+      className={styles.signin}
+      onClick={() => loginWithRedirect()}
+    ></button>
   );
 };
 

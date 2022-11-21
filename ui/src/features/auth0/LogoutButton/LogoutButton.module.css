@@ -1,3 +1,21 @@
 .cancel {
   composes: cancel from "../../../styles/utility.module.css";
 }
+
+.signout {
+  background-color: transparent;
+  background-image: url("../../../assets/sign-out.svg");
+  background-origin: border-box;
+  background-position: center;
+  background-size: 100%;
+  padding-bottom: 10px;
+  height: 32px;
+  width: 32px;
+  border: 0;
+  color: white;
+  font-family: inherit;
+}
+
+.signout:active {
+  background-image: url("../../../assets/sign-out-active.svg");
+}
