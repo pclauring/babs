@@ -16,32 +16,31 @@ export default function MonsterStats(props: MonsterProps) {
     <div>
       <div className={styles.vitals}>
         <div className={styles.vitalHeader}>CURRENT VITALS</div>
-        <div className={styles.health}>
-          <HealthIcon style={{ height: "1em" }} /> HEALTH: {monster.health}/
-          {monster.maxHealth}
-        </div>
-        <div className={styles.energy}>
-          <EnergyIcon style={{ height: "1em" }} /> ENERGY: {monster.energy}/
-          {monster.maxEnergy}
-        </div>
       </div>
       <div className={styles.attributes}>
-        <div>
-          <SwordIcon style={{ height: "1em" }} />
-          OFFENSE: {monster.offense}
+        <div className={styles.attribute}>
+          <HealthIcon style={{ height: "32px" }} />
+          {monster.health}/{monster.maxHealth}
         </div>
-        <div>
-          <ShieldIcon style={{ height: "1em" }} />
-          DEFENSE: {monster.defense}
+        <div className={styles.attribute}>
+          <EnergyIcon style={{ height: "32px" }} />
+          {monster.energy}/{monster.maxEnergy}
         </div>
-        <div>
-          {" "}
-          <TypeIcon style={{ height: "1em" }} />
-          TYPE:{monster.type}
+        <div className={styles.attribute}>
+          <SwordIcon style={{ height: "32px" }} />
+          {monster.offense}
         </div>
-        <div>
-          <MoodIcon style={{ height: "1em" }} />
-          MOOD:{monster.mood}
+        <div className={styles.attribute}>
+          <ShieldIcon style={{ height: "32px" }} />
+          {monster.defense}
+        </div>
+        <div className={styles.attribute}>
+          <TypeIcon style={{ height: "32px" }} />
+          {monster.type}
+        </div>
+        <div className={styles.attribute}>
+          <MoodIcon style={{ height: "32px" }} />
+          {monster.mood}
         </div>
       </div>
     </div>

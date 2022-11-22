@@ -27,8 +27,8 @@ const MonsterList: React.FC<{}> = () => {
       {monster && (
         <Emulator
           headerComponent={Header(monster.name)}
-          screenComponent={<Buttons />}
-          footerComponent={<MonsterStats monster={monster} />}
+          screenComponent={<MonsterStats monster={monster} />}
+          footerComponent={<Buttons />}
         />
       )}
     </div>
@@ -41,9 +41,13 @@ function Header(name: string) {
 
 function Buttons() {
   return (
-    <div>
-      <button className={styles.primary} />
-      <button className={styles.destructive} />
+    <div className={styles.buttons}>
+      <div>
+        <button style={{ padding: "10px" }} className={styles.primary} />
+      </div>
+      <div>
+        <button style={{ padding: "10px" }} className={styles.destructive} />
+      </div>
     </div>
   );
 }

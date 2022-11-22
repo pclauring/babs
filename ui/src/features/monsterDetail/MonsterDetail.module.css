@@ -5,3 +5,9 @@
 .destructive {
   composes: destructivePixel from "../../styles/utility.module.css";
 }
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+}

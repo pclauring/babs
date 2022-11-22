@@ -7,32 +7,31 @@
 .panel {
   display: grid;
   grid-template-rows: 1fr 1fr;
+  align-items: center;
 }
 
 .vitals {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column: 1fr 1fr;
-  grid-template-areas:
-    "header header"
-    "health energy";
-  font-size: 2em;
+  grid-template-areas: "header header";
 }
 
 .vitalHeader {
   grid-area: header;
 }
 
-.health {
-  grid-area: health;
-}
-
-.energy {
-  grid-area: energy;
-}
-
 .attributes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  font-size: 2em;
+  font-size: 1em;
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+.attribute {
+  display: grid;
+  grid-template-columns: auto auto;
+  font-size: 16px;
+  justify-items: left;
+  padding: 4px;
 }

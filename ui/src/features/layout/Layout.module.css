@@ -1,14 +1,14 @@
 .main {
-  height: 800px;
-  width: 400px;
+  height: 480px;
+  width: 360px;
   text-align: center;
-  background-color: #adb993;
+  background-color: transparent;
+  background-image: url("../../assets/pixel-background.svg");
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border: 0;
   margin: auto;
-  border: #949d6a;
-  border-width: 5px;
-  border-radius: 5px;
-  border-style: solid;
-  box-shadow: inset 0px 0px 5px #949d6a;
 }
 
 .nav {
@@ -19,6 +19,7 @@
 .auth {
   justify-self: end;
   padding: 5px;
+  padding-right: 15px;
 }
 
 .profile {
@@ -27,8 +28,4 @@
 }
 
 @media screen and (max-width: 400px) {
-  .main {
-    width: 100%;
-    height: 100%;
-  }
 }

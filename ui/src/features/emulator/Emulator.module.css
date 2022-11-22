@@ -1,29 +1,21 @@
 .emulator {
   display: grid;
-  grid-template-rows: 1fr 5fr 4fr;
+  grid-template-rows: 42px 198px 198px;
   height: 100%;
 }
 
 .header {
   justify-self: center;
   align-self: center;
-  background-color: #adb993;
 }
 
 .screen {
-  background-color: #d0d38f;
-  height: 90%;
-  width: 90%;
+  height: 180px;
+  width: 180px;
   margin: auto;
-  border: #949d6a;
-  border-width: 2.5px;
-  border-style: solid;
-  border-radius: 2px;
-  box-shadow: inset 0px 0px 5px #949d6a;
 }
 
 .footer {
-  background-color: #adb993;
 }
 
 .name {
