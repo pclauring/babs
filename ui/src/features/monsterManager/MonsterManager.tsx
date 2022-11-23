@@ -71,6 +71,11 @@ const MonsterManager: React.FC<{}> = () => {
       case "right":
         if (activeIndex + 1 <= 8) activeIndex++;
         break;
+      case "primary":
+        if (activeTile[0].monster) {
+          navigate(`/monster/${activeTile[0].monster?.id}`);
+        }
+        break;
       default:
         break;
     }
@@ -88,7 +93,7 @@ const MonsterManager: React.FC<{}> = () => {
       {userModel && (
         <Emulator
           headerComponent={ScreenHeader("Monster Manager")}
-          screenComponent={tiles && List(tiles, navigate)}
+          screenComponent={tiles && List(tiles)}
           footerComponent={<Controls handleClick={handleClick} />}
         />
       )}
@@ -102,25 +107,14 @@ interface Tile {
   index: number;
 }
 
-function List(tiles: Tile[], navigate: NavigateFunction) {
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const key = event.currentTarget.dataset.id;
-    console.log(key);
-    navigate(`/monster/${key}`);
-  };
-
+function List(tiles: Tile[]) {
   return (
     <div>
       <div className={styles.tiles}>
         {tiles.map((tile, index) => {
           if (tile?.monster) {
             return (
-              <div
-                onClick={handleClick}
-                key={tile.monster.id}
-                data-id={tile.monster.id}
-                className={tile.active ? styles.active : ""}
-              >
+              <div key={index} className={tile.active ? styles.active : ""}>
                 {tile.monster.name}
               </div>
             );
