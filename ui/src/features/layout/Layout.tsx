@@ -13,7 +13,7 @@ export default function Layout() {
       <div className={styles.main}>
         <div className={styles.nav}>
           <div className={styles.profile}>
-            {user && <div>{user.email}</div>}
+            {user && <div className={styles.email}>{user.email}</div>}
           </div>
           <div className={styles.auth}>
             <AuthenticationButton />
