@@ -111,9 +111,7 @@
   text-transform: uppercase;
 }
 
-.primaryPixel {
-  background-color: transparent;
-  background-image: url("../assets/primary-button.svg");
+.pixelButton {
   background-origin: border-box;
   background-position: center;
   background-size: 100%;
@@ -123,6 +121,12 @@
   border: 0;
   color: white;
   font-family: inherit;
+  background-color: transparent;
+}
+
+.primaryPixel {
+  composes: pixelButton;
+  background-image: url("../assets/primary-button.svg");
 }
 
 .primaryPixel:active {
@@ -130,19 +134,46 @@
 }
 
 .destructivePixel {
-  background-color: transparent;
+  composes: pixelButton;
   background-image: url("../assets/destructive-button.svg");
-  background-origin: border-box;
-  background-position: center;
-  background-size: 100%;
-  padding-bottom: 10px;
-  height: 32px;
-  width: 32px;
-  border: 0;
-  color: white;
-  font-family: inherit;
 }
 
 .destructivePixel:active {
   background-image: url("../assets/destructive-button-active.svg");
+}
+
+.upPixel {
+  composes: pixelButton;
+  background-image: url("../assets/up-button.svg");
+}
+
+.upPixel:active {
+  background-image: url("../assets/up-button-active.svg");
+}
+
+.downPixel {
+  composes: pixelButton;
+  background-image: url("../assets/down-button.svg");
+}
+
+.downPixel:active {
+  background-image: url("../assets/down-button-active.svg");
+}
+
+.rightPixel {
+  composes: pixelButton;
+  background-image: url("../assets/right-button.svg");
+}
+
+.rightPixel:active {
+  background-image: url("../assets/right-button-active.svg");
+}
+
+.leftPixel {
+  composes: pixelButton;
+  background-image: url("../assets/left-button.svg");
+}
+
+.leftPixel:active {
+  background-image: url("../assets/left-button-active.svg");
 }

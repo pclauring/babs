@@ -28,7 +28,7 @@ const MonsterList: React.FC<{}> = () => {
         <Emulator
           headerComponent={Header(monster.name)}
           screenComponent={<MonsterStats monster={monster} />}
-          footerComponent={<Buttons />}
+          footerComponent={<Controls />}
         />
       )}
     </div>
@@ -36,17 +36,33 @@ const MonsterList: React.FC<{}> = () => {
 };
 
 function Header(name: string) {
-  return <h1>{name}</h1>;
+  return <div className={styles.header}>{name}</div>;
 }
 
-function Buttons() {
+function Controls() {
   return (
-    <div className={styles.buttons}>
-      <div>
-        <button style={{ padding: "10px" }} className={styles.primary} />
+    <div className={styles.controlPanel}>
+      <div className={styles.controls}>
+        <div className={styles.upArea}>
+          <button className={styles.up} />
+        </div>
+        <div className={styles.rightArea}>
+          <button className={styles.right} />
+        </div>
+        <div className={styles.leftArea}>
+          <button className={styles.left} />
+        </div>
+        <div className={styles.downArea}>
+          <button className={styles.down} />
+        </div>
       </div>
-      <div>
-        <button style={{ padding: "10px" }} className={styles.destructive} />
+      <div className={styles.actions}>
+        <div className={styles.secondaryArea}>
+          <button className={styles.secondary} />
+        </div>
+        <div className={styles.primaryArea}>
+          <button className={styles.primary} />
+        </div>
       </div>
     </div>
   );
