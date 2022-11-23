@@ -7,8 +7,10 @@ import Emulator from "../emulator";
 // import styles from "./MonsterList.module.css";
 import { Link } from "react-router-dom";
 import { MonsterModel } from "../../types/MonsterModel";
+import Controls from "../controls";
+import ScreenHeader from "../screenHeader";
 
-const MonsterList: React.FC<{}> = () => {
+const MonsterManager: React.FC<{}> = () => {
   const { user } = useAuth0();
   // const navigate = useNavigate();
   const [userModel, setUserModel] = useState<UserModel>();
@@ -32,9 +34,9 @@ const MonsterList: React.FC<{}> = () => {
     <div>
       {userModel && (
         <Emulator
-          headerComponent={Header(userModel.name)}
+          headerComponent={ScreenHeader("Monster Manager")}
           screenComponent={List(userModel.monsters)}
-          footerComponent={Options()}
+          footerComponent={<Controls />}
         />
       )}
     </div>
@@ -58,18 +60,4 @@ function List(monsters: MonsterModel[]) {
     </div>
   );
 }
-
-function Header(name: string) {
-  return <h1>{name}</h1>;
-}
-
-function Options() {
-  return (
-    <ul>
-      <li>Option 1</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
-    </ul>
-  );
-}
-export default MonsterList;
+export default MonsterManager;

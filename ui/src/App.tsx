@@ -5,7 +5,7 @@ import Monster from "./features/monster";
 import Profile from "./features/profile";
 import NoMatch from "./features/nomatch";
 import ProtectedRoute from "./features/auth0/ProtectedRoute";
-import MonsterList from "./features/monsterList";
+import MonsterManager from "./features/monsterManager";
 import MonsterDetail from "./features/monsterDetail";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<MonsterList />} />
+          <Route index element={<MonsterManager />} />
           <Route
             path="monster/:id"
             element={<ProtectedRoute component={MonsterDetail} />}
