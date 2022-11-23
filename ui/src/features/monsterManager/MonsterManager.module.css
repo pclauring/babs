@@ -20,3 +20,17 @@
   font-size: 2em;
   background-color: #adb993;
 }
+
+.active svg path {
+  stroke: white;
+}
+
+.active {
+  color: white;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}

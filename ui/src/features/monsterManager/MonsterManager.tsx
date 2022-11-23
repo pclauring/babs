@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-// import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { UserService } from "../../services/UserService";
 import { UserModel } from "../../types/UserModel";
 import Emulator from "../emulator";
-// import styles from "./MonsterList.module.css";
-import { Link } from "react-router-dom";
+import styles from "./MonsterManager.module.css";
 import { MonsterModel } from "../../types/MonsterModel";
 import Controls from "../controls";
 import ScreenHeader from "../screenHeader";
+import { ReactComponent as AddIcon } from "../../assets/add.svg";
 
 const MonsterManager: React.FC<{}> = () => {
   const { user } = useAuth0();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [userModel, setUserModel] = useState<UserModel>();
+  const [tiles, setTiles] = useState<Tile[]>([]);
+
   useEffect(() => {
     const userService = new UserService(
       process.env.REACT_APP_API_HOST,
@@ -30,33 +32,107 @@ const MonsterManager: React.FC<{}> = () => {
     }
   }, [user?.email]);
 
+  useEffect(() => {
+    const initialTiles = [];
+    for (let index = 0; index < 9; index++) {
+      if (userModel && userModel?.monsters[index]) {
+        initialTiles.push({
+          monster: userModel.monsters[index],
+          active: false,
+          index: index,
+        });
+      } else {
+        initialTiles.push({ active: false, index: index });
+      }
+    }
+    initialTiles[0].active = true;
+    console.log(initialTiles);
+    setTiles(initialTiles);
+  }, [userModel]);
+
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    const activeTile = tiles?.filter((tile) => {
+      return tile.active === true;
+    });
+
+    let activeIndex: number = activeTile ? activeTile[0].index : 0;
+    switch (event.currentTarget.id) {
+      case "up":
+        if (activeIndex - 3 >= 0) activeIndex -= 3;
+        break;
+      case "down":
+        if (activeIndex + 3 <= 8) activeIndex += 3;
+        break;
+      case "left":
+        if (activeIndex - 1 >= 0) activeIndex--;
+        break;
+      case "right":
+        if (activeIndex + 1 <= 8) activeIndex++;
+        break;
+      default:
+        break;
+    }
+
+    if (tiles && activeTile) {
+      const newTiles = tiles.map((tile) => {
+        return { ...tile, active: tile.index === activeIndex };
+      });
+      setTiles(newTiles);
+    }
+  };
+
   return (
     <div>
       {userModel && (
         <Emulator
           headerComponent={ScreenHeader("Monster Manager")}
-          screenComponent={List(userModel.monsters)}
-          footerComponent={<Controls />}
+          screenComponent={tiles && List(tiles, navigate)}
+          footerComponent={<Controls handleClick={handleClick} />}
         />
       )}
     </div>
   );
 };
 
-function List(monsters: MonsterModel[]) {
+interface Tile {
+  monster?: MonsterModel;
+  active: boolean;
+  index: number;
+}
+
+function List(tiles: Tile[], navigate: NavigateFunction) {
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const key = event.currentTarget.dataset.id;
+    console.log(key);
+    navigate(`/monster/${key}`);
+  };
+
   return (
     <div>
-      <ul>
-        {monsters.map((monster) => {
-          return (
-            <li key={monster.id}>
-              <Link to={`/monster/${monster.id}`} key={monster.id}>
-                {monster.name}
-              </Link>
-            </li>
-          );
+      <div className={styles.tiles}>
+        {tiles.map((tile, index) => {
+          if (tile?.monster) {
+            return (
+              <div
+                onClick={handleClick}
+                key={tile.monster.id}
+                data-id={tile.monster.id}
+                className={tile.active ? styles.active : ""}
+              >
+                {tile.monster.name}
+              </div>
+            );
+          } else {
+            return (
+              <div key={index} className={tile.active ? styles.active : ""}>
+                <AddIcon key={index} style={{ height: "32px" }} />
+              </div>
+            );
+          }
         })}
-      </ul>
+      </div>
     </div>
   );
 }

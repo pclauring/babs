@@ -23,13 +23,19 @@ const MonsterDetail: React.FC<{}> = () => {
       });
   }, [id]);
 
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    console.log(event.currentTarget.id);
+  };
+
   return (
     <div>
       {monster && (
         <Emulator
           headerComponent={Header(monster.name)}
           screenComponent={<MonsterStats monster={monster} />}
-          footerComponent={<Controls />}
+          footerComponent={<Controls handleClick={handleClick} />}
         />
       )}
     </div>
