@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { MonsterRepository as MonsterRepository } from "../repositories/MonsterRepository";
+import { Adjectives } from "../resources/AdjectiveList";
+import { Animals } from "../resources/AnimalList";
 
 const repository = new MonsterRepository();
 
@@ -11,6 +13,41 @@ export const getAllMonsters = async (req: Request, res: Response) => {
     });
   } catch (error) {
     res.status(404).send(`Unable to find any existing monsters`);
+  }
+};
+
+export const createMonster = async (req: Request, res: Response) => {
+  try {
+    const ownerId = req.body.ownerId;
+    const animal = Animals[Math.floor(Math.random() * Animals.length)];
+    const descriptor =
+      Adjectives[Math.floor(Math.random() * Adjectives.length)];
+    const health = Math.floor(Math.random() * 10);
+    const energy = Math.floor(Math.random() * 10);
+    const offense = Math.floor(Math.random() * 10);
+    const defense = Math.floor(Math.random() * 10);
+    const monsterBody = {
+      name: animal,
+      sprite: `${animal}.png`,
+      ownerId: ownerId,
+      level: 0,
+      maxHealth: health,
+      health: health,
+      energy: energy,
+      maxEnergy: energy,
+      offense: offense,
+      defense: defense,
+      mood: descriptor,
+      type: animal,
+    };
+
+    const monster = await repository.createMonster(monsterBody);
+    monster
+      ? res.status(201).send(monster)
+      : res.status(500).send("Failed to create a new monster.");
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ message: (error as Error).message });
   }
 };
 
