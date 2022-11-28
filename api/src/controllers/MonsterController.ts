@@ -18,14 +18,14 @@ export const getAllMonsters = async (req: Request, res: Response) => {
 
 export const createMonster = async (req: Request, res: Response) => {
   try {
-    const ownerId = req.body.ownerId;
+    const ownerId = req.body.id;
     const animal = Animals[Math.floor(Math.random() * Animals.length)];
     const descriptor =
       Adjectives[Math.floor(Math.random() * Adjectives.length)];
-    const health = Math.floor(Math.random() * 10);
-    const energy = Math.floor(Math.random() * 10);
-    const offense = Math.floor(Math.random() * 10);
-    const defense = Math.floor(Math.random() * 10);
+    const health = Math.floor(Math.random() * 5) + 5;
+    const energy = Math.floor(Math.random() * 5) + 5;
+    const offense = Math.floor(Math.random() * 7) + 3;
+    const defense = Math.floor(Math.random() * 7) + 3;
     const monsterBody = {
       name: animal,
       sprite: `${animal}.png`,

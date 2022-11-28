@@ -12,7 +12,6 @@ import {
 export const monsterRouter = express.Router();
 
 monsterRouter.post("/", postMonster);
-monsterRouter.post("/createNew/:ownerId", createMonster);
 monsterRouter.get("/all", getAllMonsters);
 monsterRouter.put("/:id", putMonster);
 monsterRouter.get("/:id", getMonsterById);
