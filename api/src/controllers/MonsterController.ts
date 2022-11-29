@@ -18,7 +18,7 @@ export const getAllMonsters = async (req: Request, res: Response) => {
 
 export const createMonster = async (req: Request, res: Response) => {
   try {
-    const ownerId = req.body.id;
+    const ownerId = parseInt(req?.params?.id);
     const animal = Animals[Math.floor(Math.random() * Animals.length)];
     const descriptor =
       Adjectives[Math.floor(Math.random() * Adjectives.length)];

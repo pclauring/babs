@@ -14,4 +14,10 @@ export class UserService implements IUserService {
       params: { email: email },
     });
   }
+
+  public createUser(user: UserModel): Promise<AxiosResponse<UserModel>> {
+    return this._axiosClient.post<UserModel>("", {
+      data: user,
+    });
+  }
 }

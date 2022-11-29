@@ -1,8 +1,8 @@
 import { MonsterModel } from "./MonsterModel";
 
 export interface UserModel {
-  id: number;
+  id?: number;
   email: string;
   name: string;
-  monsters: MonsterModel[];
+  monsters?: MonsterModel[];
 }

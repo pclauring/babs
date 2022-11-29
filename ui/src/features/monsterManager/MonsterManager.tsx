@@ -23,10 +23,16 @@ const MonsterManager: React.FC<{}> = () => {
     );
     if (user?.email !== undefined) {
       userService.getUsersByEmail(user.email).then(({ data }) => {
-        // if (data[0].monsters.length === 1) {
-        //   navigate(`/monster/${data[0].monsters[0].id}`);
-        // }
-        console.log(data);
+        if (data.length === 0 && user.email) {
+          userService
+            .createUser({
+              name: user.email,
+              email: user.email,
+            })
+            .then((data) => {
+              setUserModel(data.data);
+            });
+        }
         setUserModel(data[0]);
       });
     }
@@ -35,7 +41,7 @@ const MonsterManager: React.FC<{}> = () => {
   useEffect(() => {
     const initialTiles = [];
     for (let index = 0; index < 9; index++) {
-      if (userModel && userModel?.monsters[index]) {
+      if (userModel?.monsters && userModel?.monsters[index]) {
         initialTiles.push({
           monster: userModel.monsters[index],
           active: false,
