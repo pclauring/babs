@@ -26,17 +26,49 @@
   composes: rightPixel from "../../styles/utility.module.css";
 }
 
+.menuButton {
+  composes: menuPixel from "../../styles/utility.module.css";
+  height: 32px;
+  width: 48px;
+  font-size: 16px;
+  padding-top: 6px;
+  color: #1f1f1f;
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 72px 134px;
+  height: 198px;
+}
+
+.menuPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 16px;
+}
+
+.selectArea {
+  justify-self: end;
+  padding-right: 16px;
+  padding-top: 2px;
+}
+
+.startArea {
+  justify-self: start;
+  padding-left: 16px;
+  padding-top: 2px;
+}
+
 .controlPanel {
   display: grid;
   grid-template-columns: 180px 180px;
-  height: 198px;
 }
 
 .controls {
   display: grid;
   grid-template-rows: 32px 32px 32px;
   grid-template-columns: 32px 32px 32px;
-  padding-top: 69px;
+  margin-top: -2px;
   padding-left: 44px;
   grid-template-areas:
     ". up ."
@@ -64,7 +96,7 @@
   display: grid;
   grid-template-rows: 32px 32px;
   grid-template-columns: 48px 48px;
-  padding-top: 81px;
+  padding-top: 10px;
   padding-left: 6px;
   grid-template-areas: "secondary primary";
 }

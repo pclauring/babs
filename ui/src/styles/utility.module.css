@@ -122,6 +122,17 @@
   color: white;
   font-family: inherit;
   background-color: transparent;
+  background-repeat: no-repeat;
+}
+
+.menuPixel {
+  composes: pixelButton;
+  background-image: url("../assets/menu-button.svg");
+}
+
+.menuPixel:active {
+  background-image: url("../assets/menu-button-active.svg");
+  transform: translateY(2px);
 }
 
 .primaryPixel {
