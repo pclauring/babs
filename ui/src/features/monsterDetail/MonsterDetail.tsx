@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Emulator from "../emulator";
 import styles from "./MonsterDetail.module.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MonsterModel } from "../../types/MonsterModel";
 import { MonsterService } from "../../services/MonsterService";
 import MonsterStats from "../monster/MonsterStats";
@@ -10,6 +10,7 @@ import Controls from "../controls";
 const MonsterDetail: React.FC<{}> = () => {
   const { id } = useParams();
   const [monster, setMonster] = useState<MonsterModel>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const monsterService = new MonsterService(
@@ -27,6 +28,25 @@ const MonsterDetail: React.FC<{}> = () => {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     console.log(event.currentTarget.id);
+    switch (event.currentTarget.id) {
+      case "up":
+        break;
+      case "down":
+        break;
+      case "left":
+        break;
+      case "right":
+        break;
+      case "start":
+        break;
+      case "back":
+        navigate("/");
+        break;
+      case "primary":
+        break;
+      default:
+        break;
+    }
   };
 
   return (

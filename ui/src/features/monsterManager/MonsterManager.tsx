@@ -88,9 +88,14 @@ const MonsterManager: React.FC<{}> = () => {
       case "right":
         if (activeIndex + 1 <= 8) activeIndex++;
         break;
+      case "start":
+        break;
+      case "back":
+        navigate("/");
+        break;
       case "primary":
         if (activeTile[0].monster) {
-          navigate(`/monster/${activeTile[0].monster?.id}`);
+          navigate(`/monster/${activeTile[0].monster?.id}`, { replace: true });
         } else {
           createNewMonster();
         }
