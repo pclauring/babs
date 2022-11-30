@@ -2,6 +2,7 @@ import { IUserService } from "./IUserService";
 import { AxiosResponse } from "axios";
 import AxiosClient from "../tools/AxiosClient";
 import { UserModel } from "../types/UserModel";
+import { MonsterModel } from "../types/MonsterModel";
 
 export class UserService implements IUserService {
   private readonly _axiosClient: AxiosClient;
@@ -15,9 +16,13 @@ export class UserService implements IUserService {
     });
   }
 
-  public createUser(user: UserModel): Promise<AxiosResponse<UserModel>> {
+  createUser(user: UserModel): Promise<AxiosResponse<UserModel>> {
     return this._axiosClient.post<UserModel>("", {
       data: user,
     });
+  }
+
+  createMonsterForUser(id: number): Promise<AxiosResponse<MonsterModel>> {
+    return this._axiosClient.post<MonsterModel>(`/${id}/monsters/new`, {});
   }
 }

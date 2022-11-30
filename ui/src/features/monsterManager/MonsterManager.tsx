@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserService } from "../../services/UserService";
 import { UserModel } from "../../types/UserModel";
 import Emulator from "../emulator";
@@ -16,6 +16,18 @@ const MonsterManager: React.FC<{}> = () => {
   const [userModel, setUserModel] = useState<UserModel>();
   const [tiles, setTiles] = useState<Tile[]>([]);
 
+  function createNewMonster() {
+    const userService = new UserService(
+      process.env.REACT_APP_API_HOST,
+      undefined,
+    );
+    if (userModel?.id) {
+      userService.createMonsterForUser(userModel?.id).then(({ data }) => {
+        navigate(`/monster/${data.id}`);
+      });
+    }
+  }
+
   useEffect(() => {
     const userService = new UserService(
       process.env.REACT_APP_API_HOST,
@@ -29,8 +41,8 @@ const MonsterManager: React.FC<{}> = () => {
               name: user.email,
               email: user.email,
             })
-            .then((data) => {
-              setUserModel(data.data);
+            .then(({ data }) => {
+              setUserModel(data);
             });
         }
         setUserModel(data[0]);
@@ -52,7 +64,6 @@ const MonsterManager: React.FC<{}> = () => {
       }
     }
     initialTiles[0].active = true;
-    console.log(initialTiles);
     setTiles(initialTiles);
   }, [userModel]);
 
@@ -80,6 +91,8 @@ const MonsterManager: React.FC<{}> = () => {
       case "primary":
         if (activeTile[0].monster) {
           navigate(`/monster/${activeTile[0].monster?.id}`);
+        } else {
+          createNewMonster();
         }
         break;
       default:
