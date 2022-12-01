@@ -4,7 +4,7 @@ import styles from "./MonsterDetail.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { MonsterModel } from "../../types/MonsterModel";
 import { MonsterService } from "../../services/MonsterService";
-import MonsterStats from "../monster/MonsterStats";
+import StatsScreen from "../statsScreen/StatsScreen";
 import Controls from "../controls";
 
 const MonsterDetail: React.FC<{}> = () => {
@@ -54,7 +54,7 @@ const MonsterDetail: React.FC<{}> = () => {
       {monster && (
         <Emulator
           headerComponent={Header(monster.name)}
-          screenComponent={<MonsterStats monster={monster} />}
+          screenComponent={<StatsScreen monster={monster} />}
           footerComponent={<Controls handleClick={handleClick} />}
         />
       )}

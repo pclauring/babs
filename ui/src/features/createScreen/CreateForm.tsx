@@ -5,7 +5,7 @@ type Props = {
   saveMonster: (e: React.FormEvent, formData: MonsterModel | any) => void;
 };
 
-const CreateMonster: React.FC<Props> = ({ saveMonster }) => {
+const CreateForm: React.FC<Props> = ({ saveMonster }) => {
   const [formData, setFormData] = useState<MonsterModel | {}>({
     ownerId: 1,
   });
@@ -32,4 +32,4 @@ const CreateMonster: React.FC<Props> = ({ saveMonster }) => {
   );
 };
 
-export default CreateMonster;
+export default CreateForm;

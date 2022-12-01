@@ -1,4 +1,4 @@
-import styles from "./MonsterStats.module.css";
+import styles from "./StatsScreen.module.css";
 import { MonsterModel } from "../../types/MonsterModel";
 import { ReactComponent as SwordIcon } from "../../assets/sword.svg";
 import { ReactComponent as TypeIcon } from "../../assets/type.svg";
@@ -10,7 +10,7 @@ import { ReactComponent as EnergyIcon } from "../../assets/energy.svg";
 type MonsterProps = {
   monster: MonsterModel;
 };
-export default function MonsterStats(props: MonsterProps) {
+export default function StatsScreen(props: MonsterProps) {
   const { monster } = props;
   return (
     <div>

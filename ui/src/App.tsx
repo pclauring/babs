@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./features/layout";
-import Monster from "./features/monster";
+import CreateScreen from "./features/createScreen";
 import Profile from "./features/profile";
 import NoMatch from "./features/nomatch";
 import ProtectedRoute from "./features/auth0/ProtectedRoute";
@@ -20,7 +20,7 @@ function App() {
           />
           <Route
             path="monster"
-            element={<ProtectedRoute component={Monster} />}
+            element={<ProtectedRoute component={CreateScreen} />}
           />
           <Route
             path="profile"
