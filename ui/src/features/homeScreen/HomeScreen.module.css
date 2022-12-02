@@ -1,0 +1,48 @@
+.screen {
+  display: grid;
+  grid-template-rows: 132px 48px;
+}
+
+.monsterArea {
+  align-self: center;
+}
+
+.monster {
+  height: 3em;
+  position: relative;
+  animation: monster-hover 2s infinite;
+}
+
+@keyframes monster-hover {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 10px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.menusArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: 178px;
+  margin-left: 2px;
+  justify-items: center;
+  align-items: end;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.menuItem {
+  padding: 4px 2px;
+}
+
+.inactive {
+  opacity: 0.5;
+}
+
+.menuItem > svg {
+  height: 32px;
+}
