@@ -8,7 +8,7 @@
 }
 
 .monster {
-  height: 3em;
+  height: 6em;
   position: relative;
   animation: monster-hover 2s infinite;
 }

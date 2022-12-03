@@ -14,7 +14,11 @@ export default function HomeScreen(props: MonsterProps) {
   return (
     <div className={styles.screen}>
       <div className={styles.monsterArea}>
-        <EggIcon className={styles.monster} title={monster.name} />
+        <img
+          className={styles.monster}
+          src={require(`../../assets/${monster.sprite}`)}
+          alt={monster.sprite ? monster.sprite : ""}
+        />
       </div>
       <div className={styles.menusArea}>
         {menuItems.map((item, index) => {
