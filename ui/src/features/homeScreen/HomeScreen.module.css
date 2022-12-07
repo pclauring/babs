@@ -10,7 +10,7 @@
 .monster {
   height: 6em;
   position: relative;
-  animation: monster-hover 2s infinite;
+  animation: monster-hover 4s infinite;
 }
 
 @keyframes monster-hover {
