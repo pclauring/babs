@@ -25,39 +25,21 @@ export type MenuItem = {
   inactiveState: React.ReactNode;
 };
 
+export type MonsterEmulatorState = {
+  monster: MonsterModel;
+  menuItems: MenuItem[];
+};
+
 const MonsterDetail: React.FC<{}> = () => {
   const { id } = useParams();
-  const [monster, setMonster] = useState<MonsterModel>();
-  const [menus, setMenus] = useState<MenuItem[]>([
-    {
-      active: true,
-      activeState: <TrainingIcon />,
-      inactiveState: <InactiveTrainingIcon />,
-    },
-    {
-      active: false,
-      activeState: <SwordIcon />,
-      inactiveState: <InactiveSwordIcon />,
-    },
-    {
-      active: false,
-      activeState: <StudyIcon />,
-      inactiveState: <InactiveStudyIcon />,
-    },
-    {
-      active: false,
-      activeState: <ScaleIcon />,
-      inactiveState: <InactiveScaleIcon />,
-    },
-    {
-      active: false,
-      activeState: <TrophyIcon />,
-      inactiveState: <InactiveTrophyIcon />,
-    },
-  ]);
+  const [monsterState, setMonsterState] = useState<MonsterEmulatorState>();
+
   const navigate = useNavigate();
-  const screen = monster ? (
-    <HomeScreen monster={monster} menuItems={menus} />
+  const screen = monsterState ? (
+    <HomeScreen
+      monster={monsterState.monster}
+      menuItems={monsterState.menuItems}
+    />
   ) : undefined;
 
   useEffect(() => {
@@ -67,50 +49,84 @@ const MonsterDetail: React.FC<{}> = () => {
     );
     if (id !== undefined)
       monsterService.getMonsterById(parseInt(id)).then(({ data }) => {
-        console.log(data);
-        setMonster(data);
+        setMonsterState({
+          monster: data,
+          menuItems: [
+            {
+              active: true,
+              activeState: <TrainingIcon />,
+              inactiveState: <InactiveTrainingIcon />,
+            },
+            {
+              active: false,
+              activeState: <SwordIcon />,
+              inactiveState: <InactiveSwordIcon />,
+            },
+            {
+              active: false,
+              activeState: <StudyIcon />,
+              inactiveState: <InactiveStudyIcon />,
+            },
+            {
+              active: false,
+              activeState: <ScaleIcon />,
+              inactiveState: <InactiveScaleIcon />,
+            },
+            {
+              active: false,
+              activeState: <TrophyIcon />,
+              inactiveState: <InactiveTrophyIcon />,
+            },
+          ],
+        });
       });
   }, [id]);
 
   const handleClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    let activeIndex = menus?.findIndex((item) => item.active === true);
+    if (monsterState !== undefined) {
+      let activeIndex = monsterState.menuItems.findIndex(
+        (item) => item.active === true,
+      );
 
-    console.log(event.currentTarget.id);
-    switch (event.currentTarget.id) {
-      case "up":
-        break;
-      case "down":
-        break;
-      case "left":
-        if (activeIndex > 0) activeIndex--;
-        break;
-      case "right":
-        if (activeIndex < menus.length - 1) activeIndex++;
-        break;
-      case "start":
-        break;
-      case "back":
-        navigate("/");
-        break;
-      case "primary":
-        break;
-      default:
-        break;
+      console.log(event.currentTarget.id);
+      switch (event.currentTarget.id) {
+        case "up":
+          break;
+        case "down":
+          break;
+        case "left":
+          if (activeIndex > 0) activeIndex--;
+          break;
+        case "right":
+          if (activeIndex < monsterState.menuItems.length - 1) activeIndex++;
+          break;
+        case "start":
+          break;
+        case "back":
+          navigate("/");
+          break;
+        case "primary":
+          break;
+        default:
+          break;
+      }
+      const newMenus = monsterState.menuItems.map((item, index) => {
+        return { ...item, active: index === activeIndex };
+      });
+      setMonsterState({
+        monster: monsterState.monster,
+        menuItems: newMenus,
+      });
     }
-
-    const newMenus = menus.map((item, index) => {
-      return { ...item, active: index === activeIndex };
-    });
-    setMenus(newMenus);
   };
 
   return (
     <div>
-      {monster && (
+      {monsterState && (
         <Emulator
-          headerComponent={Header(monster.name)}
+          headerComponent={Header(monsterState.monster.name)}
           screenComponent={screen}
           footerComponent={<Controls handleClick={handleClick} />}
         />
