@@ -4,8 +4,7 @@ import styles from "./MonsterDetail.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { MonsterModel } from "../../types/MonsterModel";
 import { MonsterService } from "../../services/MonsterService";
-import StatsScreen from "../statsScreen/StatsScreen";
-import HomeScreen from "../homeScreen/HomeScreen";
+import Screen from "../monsterScreen/MonsterScreen";
 import Controls from "../controls";
 
 import { ReactComponent as SwordIcon } from "../../assets/sword.svg";
@@ -36,10 +35,7 @@ const MonsterDetail: React.FC<{}> = () => {
 
   const navigate = useNavigate();
   const screen = monsterState ? (
-    <HomeScreen
-      monster={monsterState.monster}
-      menuItems={monsterState.menuItems}
-    />
+    <Screen monster={monsterState.monster} menuItems={monsterState.menuItems} />
   ) : undefined;
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import styles from "./HomeScreen.module.css";
+import styles from "./MonsterScreen.module.css";
 import { MonsterModel } from "../../types/MonsterModel";
 
 import { ReactComponent as EggIcon } from "../../assets/egg.svg";
@@ -9,7 +9,7 @@ type MonsterProps = {
   menuItems: MenuItem[];
 };
 
-export default function HomeScreen(props: MonsterProps) {
+export default function MonsterScreen(props: MonsterProps) {
   const { monster, menuItems } = props;
   return (
     <div className={styles.screen}>
@@ -36,4 +36,8 @@ export default function HomeScreen(props: MonsterProps) {
       </div>
     </div>
   );
+}
+
+function HomeScreen(name: string) {
+  return <div className={styles.header}>{name}</div>;
 }
