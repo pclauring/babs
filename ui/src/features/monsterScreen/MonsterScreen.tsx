@@ -11,6 +11,12 @@ type MonsterProps = {
 
 export default function MonsterScreen(props: MonsterProps) {
   const { monster, menuItems } = props;
+  let screen = <DefaultScreen monster={monster} menuItems={menuItems} />;
+  return <div className={styles.screen}>{screen}</div>;
+}
+
+function DefaultScreen(screenProps: MonsterProps) {
+  const { monster, menuItems } = screenProps;
   return (
     <div className={styles.screen}>
       <div className={styles.monsterArea}>
@@ -36,8 +42,4 @@ export default function MonsterScreen(props: MonsterProps) {
       </div>
     </div>
   );
-}
-
-function HomeScreen(name: string) {
-  return <div className={styles.header}>{name}</div>;
 }
