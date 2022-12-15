@@ -11,7 +11,20 @@ type MonsterProps = {
 
 export default function MonsterScreen(props: MonsterProps) {
   const { monster, menuItems } = props;
-  let screen = <DefaultScreen monster={monster} menuItems={menuItems} />;
+  const screenComponents = [
+    <TrainingScreen monster={monster} menuItems={menuItems} />,
+    <BattleScreen monster={monster} menuItems={menuItems} />,
+    <PuzzleScreen monster={monster} menuItems={menuItems} />,
+    <StatsScreen monster={monster} menuItems={menuItems} />,
+    <AchievementsScreen monster={monster} menuItems={menuItems} />,
+  ];
+  let activeIndex = menuItems.findIndex((item) => item.selected === true);
+  let screen =
+    activeIndex === -1 ? (
+      <DefaultScreen monster={monster} menuItems={menuItems} />
+    ) : (
+      screenComponents[activeIndex]
+    );
   return <div className={styles.screen}>{screen}</div>;
 }
 
@@ -42,4 +55,24 @@ function DefaultScreen(screenProps: MonsterProps) {
       </div>
     </div>
   );
+}
+
+function TrainingScreen(screenProps: MonsterProps) {
+  return <div>Training Screen</div>;
+}
+
+function BattleScreen(screenProps: MonsterProps) {
+  return <div>Battle Screen</div>;
+}
+
+function PuzzleScreen(screenProps: MonsterProps) {
+  return <div>Puzzle Screen</div>;
+}
+
+function StatsScreen(screenProps: MonsterProps) {
+  return <div>Stats Screen</div>;
+}
+
+function AchievementsScreen(screenProps: MonsterProps) {
+  return <div>Acievements Screen</div>;
 }

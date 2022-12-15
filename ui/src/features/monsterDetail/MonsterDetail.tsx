@@ -22,6 +22,7 @@ export type MenuItem = {
   active: boolean;
   activeState: React.ReactNode;
   inactiveState: React.ReactNode;
+  selected: boolean;
 };
 
 export type MonsterEmulatorState = {
@@ -52,26 +53,31 @@ const MonsterDetail: React.FC<{}> = () => {
               active: true,
               activeState: <TrainingIcon />,
               inactiveState: <InactiveTrainingIcon />,
+              selected: false,
             },
             {
               active: false,
               activeState: <SwordIcon />,
               inactiveState: <InactiveSwordIcon />,
+              selected: false,
             },
             {
               active: false,
               activeState: <StudyIcon />,
               inactiveState: <InactiveStudyIcon />,
+              selected: false,
             },
             {
               active: false,
               activeState: <ScaleIcon />,
               inactiveState: <InactiveScaleIcon />,
+              selected: false,
             },
             {
               active: false,
               activeState: <TrophyIcon />,
               inactiveState: <InactiveTrophyIcon />,
+              selected: false,
             },
           ],
         });
@@ -87,6 +93,7 @@ const MonsterDetail: React.FC<{}> = () => {
       );
 
       console.log(event.currentTarget.id);
+      let newMenus: MenuItem[] = monsterState.menuItems;
       switch (event.currentTarget.id) {
         case "up":
           break;
@@ -94,9 +101,15 @@ const MonsterDetail: React.FC<{}> = () => {
           break;
         case "left":
           if (activeIndex > 0) activeIndex--;
+          newMenus = monsterState.menuItems.map((item, index) => {
+            return { ...item, active: index === activeIndex };
+          });
           break;
         case "right":
           if (activeIndex < monsterState.menuItems.length - 1) activeIndex++;
+          newMenus = monsterState.menuItems.map((item, index) => {
+            return { ...item, active: index === activeIndex };
+          });
           break;
         case "start":
           break;
@@ -104,13 +117,19 @@ const MonsterDetail: React.FC<{}> = () => {
           navigate("/");
           break;
         case "primary":
+          newMenus = monsterState.menuItems.map((item, index) => {
+            return { ...item, selected: index === activeIndex };
+          });
+          break;
+        case "secondary":
+          newMenus = monsterState.menuItems.map((item, index) => {
+            return { ...item, selected: false };
+          });
           break;
         default:
           break;
       }
-      const newMenus = monsterState.menuItems.map((item, index) => {
-        return { ...item, active: index === activeIndex };
-      });
+
       setMonsterState({
         monster: monsterState.monster,
         menuItems: newMenus,
