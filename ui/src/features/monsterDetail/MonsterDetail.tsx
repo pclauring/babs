@@ -92,6 +92,12 @@ const MonsterDetail: React.FC<{}> = () => {
         (item) => item.active === true,
       );
 
+      let selectedIndex = monsterState.menuItems.findIndex(
+        (item) => item.selected === true,
+      );
+
+      let isItemSelected = selectedIndex !== -1;
+
       console.log(event.currentTarget.id);
       let newMenus: MenuItem[] = monsterState.menuItems;
       switch (event.currentTarget.id) {
@@ -100,16 +106,23 @@ const MonsterDetail: React.FC<{}> = () => {
         case "down":
           break;
         case "left":
-          if (activeIndex > 0) activeIndex--;
-          newMenus = monsterState.menuItems.map((item, index) => {
-            return { ...item, active: index === activeIndex };
-          });
+          if (activeIndex > 0 && !isItemSelected) {
+            activeIndex--;
+            newMenus = monsterState.menuItems.map((item, index) => {
+              return { ...item, active: index === activeIndex };
+            });
+          }
           break;
         case "right":
-          if (activeIndex < monsterState.menuItems.length - 1) activeIndex++;
-          newMenus = monsterState.menuItems.map((item, index) => {
-            return { ...item, active: index === activeIndex };
-          });
+          if (
+            activeIndex < monsterState.menuItems.length - 1 &&
+            !isItemSelected
+          ) {
+            activeIndex++;
+            newMenus = monsterState.menuItems.map((item, index) => {
+              return { ...item, active: index === activeIndex };
+            });
+          }
           break;
         case "start":
           break;
