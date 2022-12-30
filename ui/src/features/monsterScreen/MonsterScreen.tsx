@@ -3,6 +3,7 @@ import { MonsterModel } from "../../types/MonsterModel";
 
 import { ReactComponent as EggIcon } from "../../assets/egg.svg";
 import { MenuItem } from "../monsterDetail/MonsterDetail";
+import StatsScreen from "../statsScreen/StatsScreen";
 
 type MonsterProps = {
   monster: MonsterModel;
@@ -15,7 +16,7 @@ export default function MonsterScreen(props: MonsterProps) {
     <TrainingScreen monster={monster} menuItems={menuItems} />,
     <BattleScreen monster={monster} menuItems={menuItems} />,
     <PuzzleScreen monster={monster} menuItems={menuItems} />,
-    <StatsScreen monster={monster} menuItems={menuItems} />,
+    <StatsScreen monster={monster} />,
     <AchievementsScreen monster={monster} menuItems={menuItems} />,
   ];
   let activeIndex = menuItems.findIndex((item) => item.selected === true);
@@ -69,10 +70,6 @@ function PuzzleScreen(screenProps: MonsterProps) {
   return <div>Puzzle Screen</div>;
 }
 
-function StatsScreen(screenProps: MonsterProps) {
-  return <div>Stats Screen</div>;
-}
-
 function AchievementsScreen(screenProps: MonsterProps) {
-  return <div>Acievements Screen</div>;
+  return <div>Achievements Screen</div>;
 }
